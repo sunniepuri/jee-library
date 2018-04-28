@@ -1,0 +1,160 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.learning</groupId>
+    <artifactId>library</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <pluginManagement>
+
+            <!-- The Compiler Plugin is used to compile the sources of your project. -->
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+            </dependency>
+
+            <!-- Provides utility goals to work with dependencies like copying, unpacking, analyzing, resolving and many 
+                more. -->
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+
+            <!-- The Surefire Plugin is used during the test phase of the build lifecycle to execute the unit tests of an 
+                application. It generates reports in two different file formats .txt and .xml -->
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+            </dependency>
+
+            <!-- Generates a J2EE Enterprise Archive (EAR) file. -->
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+
+            <!-- Builds a Web Application Archive (WAR) file from the project output and its dependencies. -->
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.0</version>
+            </dependency>
+
+            <!-- Builds a Java Archive (JAR) file from the compiled project classes and resources. -->
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+
+        </pluginManagement>
+
+        <plugins>
+            <!-- Compile the code using java 8 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+    <dependencyManagement>
+
+        <!-- A Java serialization/deserialization library to convert Java Objects into JSON and back -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+
+        <!-- For Test, RESTEasy JAX RS Client -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>3.5.1.Final</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- For Test, A library to Write JSON unit tests in less code. Great for testing REST interfaces. -->
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+            <version>1.5.0</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Java(TM) EE 8 Specification APIs -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- The slf4j API for logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- For Test, JUnit is a unit testing framework for Java, created by Erich Gamma and Kent Beck. -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- For Test, Mocking framework for unit tests in Java -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.18.3</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- For Test, Expression Language 3.0 API, can be used in REST tests -->
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- For Test, Expression Language 3.0 IMPL -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- For Test, SLF4J Simple binding IMPL -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+</project>
