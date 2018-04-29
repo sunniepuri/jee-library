@@ -3,7 +3,7 @@
  */
 package com.learning.library.repository;
 
-import static com.learning.library.repository.common.CategoryData.*;
+import static com.learning.library.repository.data.CategoryData.*;
 import static org.junit.Assert.*;
 
 import javax.persistence.EntityManager;
@@ -15,6 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.learning.library.model.Category;
+import com.learning.library.repository.common.DBCommandTransactionalExecutor;
 
 /**
  * @author Dell
@@ -26,19 +27,13 @@ public class CategoryRepositoryTest {
 
     private CategoryRepository categoryRepository;
 
+    private DBCommandTransactionalExecutor commandExecutor;
+
     @Test
     public void addCategory() {
-        Long categoryId = null;
-        try {
-            em.getTransaction().begin();
-            categoryId = categoryRepository.addCategory(java()).getId();
-            assertNotNull(categoryId);
-            em.getTransaction().commit();
-            em.clear();
-        } catch (final Exception e) {
-            em.getTransaction().rollback();
-            fail("Exception while adding category");
-        }
+        final Long categoryId = commandExecutor.executeCommand(() -> categoryRepository.addCategory(java()).getId());
+        assertNotNull(categoryId);
+
         final Category category = categoryRepository.findById(categoryId);
         assertNotNull(category);
         assertEquals(java().getName(), category.getName());
@@ -49,6 +44,7 @@ public class CategoryRepositoryTest {
         emf = Persistence.createEntityManagerFactory("library-persistence-unit");
         em = emf.createEntityManager();
         categoryRepository = new CategoryRepository(em);
+        commandExecutor = new DBCommandTransactionalExecutor(em);
     }
 
     @After

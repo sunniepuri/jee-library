@@ -1,4 +1,4 @@
-package com.learning.library.repository.common;
+package com.learning.library.repository.data;
 
 import org.junit.Ignore;
 
