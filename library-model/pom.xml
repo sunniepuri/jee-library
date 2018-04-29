@@ -1,6 +1,40 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>library-model</groupId>
-  <artifactId>library-model</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.learning</groupId>
+        <artifactId>library</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>library-model</artifactId>
+
+    <dependencies>
+        <!-- For Tests, HSQLDB (HyperSQL DataBase) can be used as in-memory database. -->
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- For Tests, Hibernate's core ORM functionality. jboss already has this implementation. -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.17.Final</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- For Tests, Hibernate's Bean Validation (JSR-380) reference implementation. jboss already has this implementation. -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.9.Final</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
 </project>
